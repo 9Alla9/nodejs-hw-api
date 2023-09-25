@@ -4,6 +4,7 @@ const authenticate = require("./authenticate");
 const upload = require("./upload");
 
 module.exports = {
+  // export
   validateBody,
   isValidId,
   authenticate,
