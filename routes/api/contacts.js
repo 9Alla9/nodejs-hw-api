@@ -3,7 +3,9 @@ const express = require("express");
 const ctrl = require("../../controllers/contacts");
 
 const { validateBody, isValidId, authenticate } = require("../../middlewares");
+const { validateBody, isValidId, authenticate } = require("../../middlewares");
 
+const { schemas } = require("../../models/contact");
 const { schemas } = require("../../models/contact");
 
 const router = express.Router();
@@ -21,7 +23,21 @@ router.put(
   validateBody(schemas.addSchema),
   ctrl.updateById
 );
+router.put(
+  "/:id",
+  authenticate,
+  isValidId,
+  validateBody(schemas.addSchema),
+  ctrl.updateById
+);
 
+router.patch(
+  "/:id/favorite",
+  authenticate,
+  isValidId,
+  validateBody(schemas.updateFavoriteSchema),
+  ctrl.updateFavorite
+);
 router.patch(
   "/:id/favorite",
   authenticate,
@@ -33,3 +49,5 @@ router.patch(
 router.delete("/:id", authenticate, isValidId, ctrl.deleteById);
 
 module.exports = router;
+
+module.exports = router; // export
