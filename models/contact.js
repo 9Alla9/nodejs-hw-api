@@ -51,7 +51,7 @@ const schemas = {
 };
 
 const Contact = model("contact", contactSchema);
-
+// export
 module.exports = {
   Contact,
   schemas,

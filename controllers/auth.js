@@ -92,9 +92,7 @@ const updateAvatar = async (req, res) => {
   });
 };
 
-// export
 module.exports = {
-  //export
   register: ctrlWrapper(register),
   login: ctrlWrapper(login),
   getCurrent: ctrlWrapper(getCurrent),
