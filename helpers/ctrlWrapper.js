@@ -3,11 +3,10 @@ const ctrlWrapper = (ctrl) => {
     try {
       await ctrl(req, res, next);
     } catch (error) {
-      next(error); // Error
+      next(error);
     }
   };
-  return func;
+  return func; // повернення
 };
-// export
 
 module.exports = ctrlWrapper;

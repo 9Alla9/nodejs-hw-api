@@ -1,6 +1,6 @@
 const { Contact } = require("../models/contact");
 
-const { HttpError, ctrlWrapper } = require("../helpers"); // Error
+const { HttpError, ctrlWrapper } = require("../helpers");
 
 const getAll = async (req, res) => {
   const { _id: owner } = req.user;
@@ -39,7 +39,7 @@ const updateById = async (req, res) => {
     { new: true }
   );
   if (!result) {
-    throw HttpError(404, "Not found");
+    throw HttpError(404, "Not found"); // помилка
   }
   res.json(result);
 };

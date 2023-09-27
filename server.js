@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const app = require("./app"); // app
-
+const app = require("./app");
 const { DB_HOST } = process.env;
 
 console.log(DB_HOST);
@@ -15,6 +14,6 @@ mongoose
     });
   })
   .catch((err) => {
-    console.log(err.message);
+    console.log(err.message); // помилка
     process.exit(1);
   });

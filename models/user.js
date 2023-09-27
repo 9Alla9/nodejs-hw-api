@@ -30,7 +30,7 @@ const userSchema = new Schema(
   { versionKey: false, timestamps: true }
 );
 
-userSchema.post("save", handleMongooseError);
+userSchema.post("save", handleMongooseError); // Schema
 
 const registerSchema = Joi.object({
   name: Joi.string().required(),

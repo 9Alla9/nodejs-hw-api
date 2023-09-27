@@ -1,10 +1,10 @@
-const express = require("express"); // express
+const express = require("express");
 
 const ctrl = require("../../controllers/contacts");
 
 const { validateBody, isValidId, authenticate } = require("../../middlewares");
 
-const { schemas } = require("../../models/contact");
+const { schemas } = require("../../models/contact"); // schemas
 
 const router = express.Router();
 
@@ -32,4 +32,4 @@ router.patch(
 
 router.delete("/:id", authenticate, isValidId, ctrl.deleteById);
 
-module.exports = router; // export
+module.exports = router;
