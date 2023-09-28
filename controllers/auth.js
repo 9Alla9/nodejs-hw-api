@@ -5,7 +5,7 @@ const path = require("path");
 const fs = require("fs/promises");
 
 const { User } = require("../models/user");
-const { HttpError, ctrlWrapper } = require("../helpers"); // Error
+const { HttpError, ctrlWrapper } = require("../helpers");
 
 require("dotenv").config();
 const { SECRET_KEY } = process.env;
@@ -14,14 +14,13 @@ const avatarsDir = path.join(__dirname, "../", "public", "avatars");
 
 const register = async (req, res) => {
   const { email, password } = req.body;
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ email }); // первіряємо унікальність email
   console.log("email:", email);
   console.log("user:", user);
 
   if (user) {
     throw HttpError(409, "Email already in use");
   }
-
   const hashPassword = await bcrypt.hash(password, 10);
   console.log(hashPassword);
   const avatarURL = gravatar.url(email);
@@ -40,10 +39,9 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   const { email, password } = req.body;
-
   const user = await User.findOne({ email });
   if (!user) {
-    throw HttpError(401, "Email invalid"); // помилка
+    throw HttpError(401, "Email invalid");
   }
   const passwordCompare = await bcrypt.compare(password, user.password);
   if (!passwordCompare) {

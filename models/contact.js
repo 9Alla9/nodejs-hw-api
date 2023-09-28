@@ -1,5 +1,5 @@
-const { Schema, model } = require("mongoose"); // schema
-const Joi = require("joi"); // joi
+const { Schema, model } = require("mongoose");
+const Joi = require("joi");
 
 const { handleMongooseError } = require("../helpers");
 
@@ -28,7 +28,6 @@ const contactSchema = new Schema(
       required: true,
     },
   },
-
   { versionKey: false, timestamps: true }
 );
 
@@ -51,7 +50,7 @@ const schemas = {
 };
 
 const Contact = model("contact", contactSchema);
-// export
+
 module.exports = {
   Contact,
   schemas,
