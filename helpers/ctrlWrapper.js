@@ -6,7 +6,7 @@ const ctrlWrapper = (ctrl) => {
       next(error);
     }
   };
-  return func; // повернення
+  return func;
 };
 
 module.exports = ctrlWrapper;

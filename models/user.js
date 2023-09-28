@@ -49,7 +49,7 @@ const schemas = {
 };
 
 const User = model("user", userSchema);
-// export
+
 module.exports = {
   User,
   schemas,

@@ -1,9 +1,9 @@
 const errorMessageList = {
-  400: "Bad Request",
-  401: "Unauthorized",
-  403: "Forbidden",
-  404: "Not found",
-  409: "Conflict",
+  400: "Bad Request", // "Поганий запит"
+  401: "Unauthorized", // "Неавторизовано"
+  403: "Forbidden", // "Заборонено"
+  404: "Not found", // "Не знайдено"
+  409: "Conflict", // "Конфлікт"
 };
 
 const HttpError = (status, message = errorMessageList[status]) => {
