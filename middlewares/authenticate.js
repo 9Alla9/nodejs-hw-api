@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-
 const { User } = require("../models/user");
 
 const { HttpError } = require("../helpers");
@@ -14,7 +13,7 @@ const authenticate = async (req, res, next) => {
   }
   try {
     const { id } = jwt.verify(token, SECRET_KEY);
-    // перевірка чи є користувач в базі
+    // перевіряє чи є user в базі
     const user = await User.findById(id);
     if (!user || !user.token || user.token !== token) {
       next(HttpError(401));
