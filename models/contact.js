@@ -28,7 +28,6 @@ const contactSchema = new Schema(
       required: true,
     },
   },
-
   { versionKey: false, timestamps: true }
 );
 
@@ -53,7 +52,6 @@ const schemas = {
 const Contact = model("contact", contactSchema);
 
 module.exports = {
-  //export
   Contact,
   schemas,
 };

@@ -1,9 +1,9 @@
 const errorMessageList = {
-  400: "Bad Request",
-  401: "Unauthorized",
-  403: "Forbidden", 
-  404: "Not found",
-  409: "Conflict"
+  400: "Bad Request", // поганий запит
+  401: "Unauthorized", // несанкціонований
+  403: "Forbidden", // заборонено
+  404: "Not found", // не знайдено
+  409: "Conflict", // конфлікт
 };
 
 const HttpError = (status, message = errorMessageList[status]) => {
@@ -12,4 +12,4 @@ const HttpError = (status, message = errorMessageList[status]) => {
   return error;
 };
 
-module.exports = HttpError;//export
+module.exports = HttpError;
