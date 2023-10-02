@@ -3,15 +3,12 @@ const { Contact } = require("../models/contact");
 const { HttpError, ctrlWrapper } = require("../helpers");
 
 const getAll = async (req, res) => {
-  const { _id: owner } = req.user;
-  console.log("user:", req.user);
-  const { page = 1, limit = 10 } = req.query;
-  const skip = (page - 1) * limit;
-  const result = await Contact.find({ owner }, "-createdAt -updatedAt", {
-    skip,
-    limit,
-  }).populate("owner", "name email"); // витяг тільки потрібних полів
-  res.json(result);
+    const {_id: owner} = req.user;
+    console.log("user:", req.user);
+    const {page = 1, limit = 10} = req.query;
+    const skip = (page - 1) * limit;
+    const result = await Contact.find({owner}, "-createdAt -updatedAt", {skip, limit}).populate("owner", "name email"); // витяг тільки потрібних полів
+    res.json(result);
 };
 
 const getById = async (req, res) => {
@@ -51,22 +48,22 @@ const updateFavorite = async (req, res) => {
 };
 
 const deleteById = async (req, res) => {
-  const { _id: owner } = req.user; // id
-  const { id } = req.params;
-  const result = await Contact.findOneandDelete({ _id: id, owner: owner });
-  if (!result) {
-    throw HttpError(404, "Not found");
-  }
-  res.json({
-    message: "Delete success",
-  });
+    const {_id: owner} = req.user;    
+    const { id } = req.params;
+    const result = await Contact.findOneandDelete({_id: id, owner: owner});
+    if (!result) {
+        throw HttpError(404, "Not found");
+    }        
+    res.json({
+        message: "Delete success"
+    })
 };
 
 module.exports = {
-  getAll: ctrlWrapper(getAll),
-  getById: ctrlWrapper(getById),
-  add: ctrlWrapper(add),
-  updateById: ctrlWrapper(updateById),
-  updateFavorite: ctrlWrapper(updateFavorite),
-  deleteById: ctrlWrapper(deleteById),
-};
+    getAll: ctrlWrapper(getAll),
+    getById: ctrlWrapper(getById),
+    add: ctrlWrapper(add),
+    updateById: ctrlWrapper(updateById),
+    updateFavorite: ctrlWrapper(updateFavorite),
+    deleteById: ctrlWrapper(deleteById),
+}
