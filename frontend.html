@@ -10,7 +10,8 @@
     <div id="books"></div>
     <script>
       const productsContainer = document.getElementById("books");
-      const baseURL = "http://localhost:3000";
+      const baseURL =
+        "http://localhost:3000/avatars\\555t7c44d9ea26ff6478615_avatar.jpg";
       const productsRequest = axios.get(`${baseURL}/api/books`);
       productsRequest
         .then(({ data }) => {
