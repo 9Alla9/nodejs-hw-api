@@ -3,7 +3,6 @@ const isValidId = require("./isValidId");
 const authenticate = require("./authenticate");
 
 module.exports = {
-  //export
   validateBody,
   isValidId,
   authenticate,
